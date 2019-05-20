@@ -27,7 +27,7 @@ const FILE = './courses.json';
 const fs = require('fs');
 const argv = require('yargs')
 .command('course','Mostrar curso(s)',optionsCourse)
-.command('subscribe','Inscribir curso(s)',optionsSubscribe)
+.command('sub','Inscribir curso(s)',optionsSubscribe)
 .argv;
 
 function main(){
@@ -111,10 +111,17 @@ function subscribeStudent(courses, nameStud,dni,selected){
 }
 
 function welcome(){
+    console.log('________________________________');
     console.log('Bienvenido a la primera entrega');
+    console.log('');
     console.log('Por favor seleccionar alguna de las opciones:');
-    console.log('  1.comando "course", curso Id "-c=" y/o subscribed "-s=" opcionales ambos');
-    console.log('  2.comando "subscribe" nombre "-n=", documento "-d=" y curso id "-s=" todos obligatorios');
+    console.log('');
+    console.log('  1.Para mostrar los cursos disponibles y/o mostrar un curso en especifico con sus inscritos:');
+    console.log('    comando "course", curso Id "-c=", mostrar inscritos "-s=1" opcionales ambos');
+    console.log('  2.Para inscribir un estudiante a uno de los cursos:');
+    console.log('    comando "sub" nombre "-n=", documento "-d=" y curso id "-s=" todos obligatorios');
+    console.log('');
+    console.log('Nota: Todos los comandos deben de ser precedidos por "node index"');
 }
 
 main();
