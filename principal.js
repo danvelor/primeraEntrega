@@ -15,11 +15,11 @@ const optionsSubscribe = {
     },
     dni:{
         demand: true,
-        alias: 'd'
+        alias: 'x'
     },
     selected:{
         demand: true,
-        alias: 's'
+        alias: 'i'
     }
 };
 const FILE = './courses.json';
@@ -27,7 +27,7 @@ const FILE = './courses.json';
 const fs = require('fs');
 const argv = require('yargs')
 .command('course','Mostrar curso(s)',optionsCourse)
-.command('sub','Inscribir curso(s)',optionsSubscribe)
+.command('inscribir','Inscribir curso(s)',optionsSubscribe)
 .argv;
 
 function main(){
@@ -58,7 +58,7 @@ function searchCourses(continueWith){
 }
 
 function printCourse(courses,idParam, subs){
-    let time = 200;
+    let time = 2000;
     courses.forEach(element => {
         let {id='Vacio',name='Vacio',duration='Vacio',cost='Vacio',subscribed = []} = element;
         if(idParam === 0 || idParam=== id ){
@@ -89,10 +89,12 @@ function printSubscribed(subscribed){
 }
 
 function subscribeStudent(courses, nameStud,dni,selected){
+    let notFinded = false;
     let update = courses.map(element =>{
         let {id='Vacio',subscribed = []} = element;
 
         if(id!=selected) return element;
+        notFinded = true;
         if( subscribed.some(elem=> elem.dni === dni)){
             console.log('-----------El estudiante ya se encuentra inscrito.----------');
             return element;
@@ -102,6 +104,11 @@ function subscribeStudent(courses, nameStud,dni,selected){
             return element;
         }
     });
+    if(!notFinded){
+        console.log('Curso con id '+selected+' no se a encontrado.');
+        setTimeout(welcome,1000);
+        return;
+    }
     let updateString = JSON.stringify(update);
     fs.writeFile(FILE, updateString, function (err) {
         if (err) return console.log('Fallo la suscripción: '+err);
@@ -119,9 +126,9 @@ function welcome(){
     console.log('  1.Para mostrar los cursos disponibles y/o mostrar un curso en especifico con sus inscritos:');
     console.log('    comando "course", curso Id "-c=", mostrar inscritos "-s=1" opcionales ambos');
     console.log('  2.Para inscribir un estudiante a uno de los cursos:');
-    console.log('    comando "sub" nombre "-n=", documento "-d=" y curso id "-s=" todos obligatorios');
+    console.log('    comando "inscribir" nombre "-n=", documento "-x=" y curso id "-i=" todos obligatorios');
     console.log('');
-    console.log('Nota: Todos los comandos deben de ser precedidos por "node index"');
+    console.log('Nota: Todos los comandos deben de ser precedidos por "node principal"');
 }
 
 main();

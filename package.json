@@ -2,7 +2,7 @@
   "name": "primera-entrega",
   "version": "1.0.0",
   "description": "primera entrega para TdeA por Edwin Valero",
-  "main": "index.js",
+  "main": "principal.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
