@@ -93,7 +93,7 @@ function subscribeStudent(courses, nameStud,dni,selected){
         let {id='Vacio',subscribed = []} = element;
 
         if(id!=selected) return element;
-        if( subscribed.some((elem)=> elem.dni === dni)){
+        if( subscribed.some(elem=> elem.dni === dni)){
             console.log('-----------El estudiante ya se encuentra inscrito.----------');
             return element;
         }else{
