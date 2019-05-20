@@ -1,13 +1,21 @@
 {
-  "name": "fundamentos-tdea",
+  "name": "primera-entrega",
   "version": "1.0.0",
-  "description": "primer entrega",
+  "description": "primera entrega para TdeA por Edwin Valero",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "edwin valero edwwin527@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edwinValero/primeraEntrega.git"
+  },
+  "author": "edwwin527@gmail.com",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/edwinValero/primeraEntrega/issues"
+  },
+  "homepage": "https://github.com/edwinValero/primeraEntrega#readme",
   "dependencies": {
     "yargs": "^13.2.4"
   }
